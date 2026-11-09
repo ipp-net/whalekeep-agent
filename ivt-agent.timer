@@ -1,0 +1,11 @@
+[Unit]
+Description=Run the infrastructure vulnerability tracker host agent
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=6h
+RandomizedDelaySec=15min
+Unit=ivt-agent.service
+
+[Install]
+WantedBy=timers.target
