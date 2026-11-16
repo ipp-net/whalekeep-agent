@@ -23,7 +23,7 @@ Revoking an agent on the server makes its next report fail with `401`, and the a
 Static binaries for `linux/amd64` and `linux/arm64`. They have no dependencies and run on any distribution with systemd.
 
 ```
-VERSION=v0.1.0
+VERSION=v0.1.1
 ARCH=amd64
 curl -fsSLO https://github.com/ipp-net/whalekeep-agent/releases/download/$VERSION/whalekeep-agent_${VERSION}_linux_${ARCH}.tar.gz
 curl -fsSLO https://github.com/ipp-net/whalekeep-agent/releases/download/$VERSION/SHA256SUMS
@@ -70,7 +70,7 @@ The host is reported under its hostname; `--host-name` overrides it. `--docker-s
 3. Install the chart. `clusterName` must be unique within your tenant:
 
    ```
-   helm install whalekeep-agent oci://ghcr.io/ipp-net/charts/whalekeep-agent --version 0.1.0 \
+   helm install whalekeep-agent oci://ghcr.io/ipp-net/charts/whalekeep-agent --version 0.1.1 \
      --namespace whalekeep --set clusterName=prod-eu
    ```
 
@@ -112,6 +112,7 @@ Chart values:
 | `clusterName` | required | Cluster name, unique within the tenant |
 | `interval` | `6h` | Time between reports |
 | `excludeNamespaces` | empty | Label selector of namespaces to skip, for example `team=sandbox` |
+| `excludeNamespaceRegex` | empty | Regular expression matched against the whole namespace name; matching namespaces are skipped, for example `sandbox-.*\|.*-test`. A namespace is skipped when it matches either filter |
 | `credential.existingSecret` | `whalekeep-agent-credential` | Secret holding `server`, `agent_id`, `secret` and `tenant` |
 | `image.repository`, `image.tag` | `ghcr.io/ipp-net/whalekeep-agent`, the chart's version | Agent image |
 | `resources` | 50m CPU and 64Mi requested, 256Mi limit | Container resources |
