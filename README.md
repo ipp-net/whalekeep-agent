@@ -23,7 +23,7 @@ Revoking an agent on the server makes its next report fail with `401`, and the a
 Static binaries for `linux/amd64` and `linux/arm64`. They have no dependencies and run on any distribution with systemd.
 
 ```
-VERSION=v0.1.1
+VERSION=v0.1.2
 ARCH=amd64
 curl -fsSLO https://github.com/ipp-net/whalekeep-agent/releases/download/$VERSION/whalekeep-agent_${VERSION}_linux_${ARCH}.tar.gz
 curl -fsSLO https://github.com/ipp-net/whalekeep-agent/releases/download/$VERSION/SHA256SUMS
@@ -70,7 +70,7 @@ The host is reported under its hostname; `--host-name` overrides it. `--docker-s
 3. Install the chart. `clusterName` must be unique within your tenant:
 
    ```
-   helm install whalekeep-agent oci://ghcr.io/ipp-net/charts/whalekeep-agent --version 0.1.1 \
+   helm install whalekeep-agent oci://ghcr.io/ipp-net/charts/whalekeep-agent --version 0.1.2 \
      --namespace whalekeep --set clusterName=prod-eu
    ```
 
